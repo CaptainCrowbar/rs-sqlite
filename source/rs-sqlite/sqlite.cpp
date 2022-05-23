@@ -236,8 +236,8 @@ namespace RS::Sqlite {
     }
 
     void Query::check_arg_bindings() const {
-        int n_set = std::count(params_.begin(), params_.end(), true);
-        if (n_set < int(params_.size()))
+        auto n_set = std::count(params_.begin(), params_.end(), true);
+        if (n_set < ptrdiff_t(params_.size()))
             throw InvalidArgument("Not all parameters set in query ({0} out of {1} set)"_fmt(n_set, params_.size()));
     }
 
